@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @puja.product_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @puja.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_puja_path(@puja) %> |
+<%= link_to 'Back', pujas_path %>

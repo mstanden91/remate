@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :pujas
+
+  devise_for :users
   get 'welcome/index'
 
-  resources :products
+  resources :products do
+    resources :pujas
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,7 +22,13 @@
   <div class="field">
     <%= f.label :min_price %><br>
     <%= f.number_field :min_price %>
+  </div>  <div class="field">
+    <%= f.label :state_id %><br>
+    <%= f.select :state_id, State.all.map{|l| [l.name, l.id]} %>
   </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

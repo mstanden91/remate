@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+
   end
 
   # GET /products/1
@@ -19,6 +20,15 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:product_id])
+    @time = @product.created_at + 2.hrs + (@product.pujas.count)*2.min
+
+    if datetime.now > @time
+      @product.state = 3
+    end
+
+    @product.save
+
   end
 
   # POST /products
@@ -69,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :photo, :min_price)
+      params.require(:product).permit(:name, :photo, :min_price, :state_id)
     end
 end

@@ -2,11 +2,61 @@
 <html>
 <head>
   <title>Remate</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>">De Remateee</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+     <li><a href="<%= products_path %>">Productos</a></li>
+        
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          <% if user_signed_in? %>
+          <%= (current_user).email %>
+          <% else %>
+          <li><a href=" <%=user_session_path %>">Iniciar Sesión</a></li>
+          <% end %>
+
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+           <% if user_signed_in? %>
+            <li><a href="#">Mis Productos</a></li>
+            <li><a href="#">Mis compras</a></li>
+            <li><a href="<%= destroy_user_session_path %>" data-method = "DELETE">Cerrar Sesión</a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 
 <%= yield %>
 

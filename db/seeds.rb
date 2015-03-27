@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+State.delete_all
+
+state = [
+
+['Creado'], ['Publicado'], 
+
+]
+
+state.map{|b| State.create(name: b.first)} 
