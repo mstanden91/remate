@@ -1,2 +1,3 @@
 class Product < ActiveRecord::Base
-end
+  belongs_to :state
+ end

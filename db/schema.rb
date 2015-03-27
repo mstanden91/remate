@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327130315) do
+ActiveRecord::Schema.define(version: 20150327140330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,17 +22,10 @@ ActiveRecord::Schema.define(version: 20150327130315) do
     t.integer  "min_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "products_states", force: :cascade do |t|
-    t.integer  "product_id"
     t.integer  "state_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
-  add_index "products_states", ["product_id"], name: "index_products_states_on_product_id", using: :btree
-  add_index "products_states", ["state_id"], name: "index_products_states_on_state_id", using: :btree
+  add_index "products", ["state_id"], name: "index_products_on_state_id", using: :btree
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +33,5 @@ ActiveRecord::Schema.define(version: 20150327130315) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "products_states", "products"
-  add_foreign_key "products_states", "states"
+  add_foreign_key "products", "states"
 end
